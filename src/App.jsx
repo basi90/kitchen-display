@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Table from './components/Table';
+import './App.css';
 
 function App() {
   const [processedData, setProcessedData] = useState({});
