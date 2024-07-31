@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Table from './components/Table';
 
 function App() {
   const [orders, setOrders] = useState([]);
@@ -19,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <h1>Kitchen Display System</h1>
-      <pre>{JSON.stringify(orders, null, 2)}</pre>
+      <Table data={orders} />
     </div>
   );
 }
