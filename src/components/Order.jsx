@@ -1,4 +1,3 @@
-// src/components/Order.js
 import React from 'react';
 
 function Order({ product, quantity }) {
