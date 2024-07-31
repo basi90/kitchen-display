@@ -11,18 +11,17 @@
 }
 
 .order-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  width: 30%;
+  width: 45%; /* Adjust to fit 2 rows of 4 */
 }
 
-.order {
-  display: flex;
-  justify-content: space-between;
-}
-
-.order span {
-  margin: 5px 0;
+.orders {
+  overflow-y: auto;
+  max-height: 200px; /* Adjust based on your design */
 }
