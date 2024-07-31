@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Table from './components/Table';
+import Navbar from './components/Navbar/Navbar';
+import Table from './components/Table/Table';
 import './App.css';
 
 function App() {
   const [processedData, setProcessedData] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
     async function fetchData() {
@@ -38,10 +41,30 @@ function App() {
     return ordersByTable;
   }
 
+  function handlePageChange(direction) {
+    if (direction === 'next' && currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    } else if (direction === 'prev' && currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  }
+
+  const totalPages = Math.ceil(Object.keys(processedData).length / itemsPerPage);
+  const displayedTables = Object.entries(processedData).slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <div className="App">
-      <h1>Kitchen Display System</h1>
-      <Table data={processedData} />
+      <Navbar currentPage={currentPage} totalPages={totalPages} />
+      <div className="table-container">
+        <Table data={Object.fromEntries(displayedTables)} />
+      </div>
+      <div className="pagination">
+        <button onClick={() => handlePageChange('prev')}>Previous</button>
+        <button onClick={() => handlePageChange('next')}>Next</button>
+      </div>
     </div>
   );
 }
