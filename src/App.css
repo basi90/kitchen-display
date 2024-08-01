@@ -4,24 +4,27 @@
   padding: 20px;
 }
 
-.table {
+.table-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* Adjust height to fit screen */
 }
 
-.order-table {
+.pagination {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  width: 45%; /* Adjust to fit 2 rows of 4 */
+  margin-top: 20px;
 }
 
-.orders {
-  overflow-y: auto;
-  max-height: 200px; /* Adjust based on your design */
+.pagination button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #777;
 }

@@ -1,6 +1,6 @@
 .table {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); /* Adjust to ensure 2 columns */
+  grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
   gap: 20px;
   padding: 10px;
   box-sizing: border-box;
@@ -9,12 +9,12 @@
 
 @media (min-width: 1024px) {
   .table {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for wider screens */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 1024px) {
   .table {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for narrower screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }

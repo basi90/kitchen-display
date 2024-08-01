@@ -1,4 +1,3 @@
-// src/components/Table.jsx
 import React from 'react';
 import OrderTable from '../OrderTable/OrderTable';
 import './Table.css';
