@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .table-container {
@@ -21,8 +22,8 @@
   opacity: 0; /* Makes buttons invisible but still interactive */
   background-color: transparent; /* No background */
   border: none; /* No borders */
-  width: 50px; /* Sufficient width for easier interaction */
-  height: 50px; /* Sufficient height for easier interaction */
+  width: 16px; /* Sufficient width for easier interaction */
+  height: 16px; /* Sufficient height for easier interaction */
   cursor: pointer; /* Shows a pointer to hint at interactivity */
 }
 

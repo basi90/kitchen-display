@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
+import logo from '../../assets/logo_kitchen.png';
 
 function Navbar({ currentPage, totalPages }) {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
@@ -14,7 +15,7 @@ function Navbar({ currentPage, totalPages }) {
   return (
     <div className="navbar">
       <div className="left-section">
-        <div className="logo">Logo</div>
+        <img src={logo} alt="Logo" className="logo" />
         <div className="time-pages">
           <div className="time">{currentTime}</div>
           <div className="page-info">Page {currentPage} of {totalPages}</div>

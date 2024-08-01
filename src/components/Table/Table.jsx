@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import OrderTable from '../OrderTable/OrderTable';
 import './Table.css';
 
-function Table({ data }) {
+function Table({ data, currentPage, itemsPerPage }) {
   const [highlightedId, setHighlightedId] = useState(null);
 
   const handleHighlightChange = (id) => {
@@ -13,15 +13,15 @@ function Table({ data }) {
     <div className="table">
       {Object.entries(data).map(([tableName, orders], index) => (
         <OrderTable
-          key={tableName}
+          key={index} // You might want to find a more stable key if the data changes
+          tableId={((currentPage - 1) * itemsPerPage) + index + 1} // Calculate ID based on current page and index
           tableName={tableName}
           orders={orders}
-          tableId={tableName} // Assuming tableName is unique and can be used as id
           serverName="John Doe"
           timePassed="15 mins"
           initialStatus="new"
           peopleCount={4}
-          isHighlighted={tableName === highlightedId}
+          isHighlighted={((currentPage - 1) * itemsPerPage) + index + 1 === highlightedId}
           onHighlightChange={handleHighlightChange}
         />
       ))}

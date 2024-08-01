@@ -4,13 +4,15 @@
   align-items: center;
   padding: 10px;
   background-color: #333;
-  color: white;
+  color: #333;
   width: 100%;
   box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+  background-color: white;
+  border-bottom: 1px solid #333;
 }
 
 .left-section {
@@ -19,8 +21,8 @@
 }
 
 .logo {
-  font-size: 1.5em;
-  font-weight: bold;
+  max-height: 100%;
+  width: auto;
   margin-right: 20px;
 }
 
@@ -51,14 +53,24 @@
 }
 
 .btn {
-  background-color: #555;
-  color: white;
-  border: none;
+  background-color: #f0f0f0;
+  color: #333;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+  border: 1px solid #333;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover {
   background-color: #777;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+      height: 50px; /* Smaller navbar on smaller screens */
+  }
+  .logo {
+      max-height: 80%; /* Smaller logo to fit a smaller navbar */
+  }
 }
