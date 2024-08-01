@@ -19,13 +19,10 @@
 }
 
 .header {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 5px;
   align-items: center; /* Align items in the center vertically */
 }
 
 .footer {
-  border-top: 1px solid #ddd;
   margin-top: 5px;
 }
 
@@ -91,13 +88,13 @@
 
 
 .new {
-  background-color: grey;
+  background-color: #607d8b; /* Less stark, more subdued blue-grey */
 }
 .cooking {
-  background-color: orange;
+  background-color: #ff9800; /* Vibrant orange */
 }
 .done {
-  background-color: green;
+  background-color: #4caf50; /* Rich green */
 }
 
 .highlighted {
