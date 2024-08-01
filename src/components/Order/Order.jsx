@@ -3,7 +3,7 @@ import './Order.css';
 
 function formatProductName(productName) {
   if (!productName) return '';
-  return productName.replace(/_/g, ' '); // Global replacement of all underscores
+  return productName.replace(/_/g, ' ');
 }
 
 

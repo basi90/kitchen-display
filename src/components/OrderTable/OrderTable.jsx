@@ -18,7 +18,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
 
   const handleTableClick = () => {
     if (!isHighlighted) {
-      onHighlightChange(tableId); // Highlight the table
+      onHighlightChange(tableId);
     } else {
       if (status !== 'done') {
         const nextStatus = status === 'new' ? 'cooking' : 'done';
