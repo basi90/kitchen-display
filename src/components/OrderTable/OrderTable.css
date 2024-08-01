@@ -1,5 +1,5 @@
 .order-table {
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -11,10 +11,12 @@
 
 .header, .footer {
   display: flex;
+  flex-wrap: wrap; /* Allow content to wrap */
   justify-content: space-between;
   padding: 10px;
-  color:white;
+  color: white;
   width: 100%;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 .header {
@@ -25,7 +27,6 @@
 .footer {
   border-top: 1px solid #ddd;
   margin-top: 5px;
-
 }
 
 .orders {
@@ -64,12 +65,24 @@
   font-size: 0.7em;
   display: flex;
   flex-direction: column;
+  flex-basis: 100%; /* Make sure it takes full width if necessary */
+  word-wrap: break-word; /* Ensure long words break to fit within the container */
 }
 
 .time-status, .people-count {
   font-size: 0.7em;
 }
 
-.new { background-color: grey; }
-.cooking { background-color: orange; }
-.done { background-color: green; }
+.new {
+  background-color: grey;
+}
+.cooking {
+  background-color: orange;
+}
+.done {
+  background-color: green;
+}
+
+.highlighted {
+  border-width: 8px; /* Thicker border for highlighted state */
+}

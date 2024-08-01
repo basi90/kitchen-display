@@ -2,18 +2,25 @@ import React, { useState } from 'react';
 import Order from '../Order/Order';
 import './OrderTable.css';
 
-function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, peopleCount }) {
+function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, peopleCount, isHighlighted, onHighlightChange }) {
   const [status, setStatus] = useState(initialStatus);
 
-  const handleStatusChange = () => {
-    const nextStatus = status === 'new' ? 'cooking' : (status === 'cooking' ? 'done' : 'new');
-    setStatus(nextStatus);
+  const handleTableClick = () => {
+    if (!isHighlighted) {
+      onHighlightChange(tableId); // Highlight the table
+    } else {
+      // Change status when table is already highlighted
+      if (status !== 'done') {
+        const nextStatus = status === 'new' ? 'cooking' : 'done';
+        setStatus(nextStatus);
+      }
+    }
   };
 
   return (
-    <div className={`order-table ${status}`}>
+    <div className={`order-table ${status} ${isHighlighted ? 'highlighted' : ''}`} onClick={handleTableClick}>
       <div className="header">
-        <div className="title">{tableName}</div>
+        <div className="table-title">{tableName}</div>
         <div className="id-server">
           <div>{`#${tableId}`}</div>
           <div>{`Served by ${serverName}`}</div>
@@ -26,7 +33,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
       </div>
       <div className="footer">
         <div className="time-status">
-          {timePassed} | <button onClick={handleStatusChange}>{status}</button>
+          {timePassed} | {status}
         </div>
         <div className="people-count">People: {peopleCount}</div>
       </div>
