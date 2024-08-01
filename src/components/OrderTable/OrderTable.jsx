@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Order from '../Order/Order';
 import './OrderTable.css';
 
-function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, peopleCount, isHighlighted, onHighlightChange }) {
+const names = ["Bram", "Annelies", "Joren", "Els", "Stijn", "Lotte", "Wout", "Ine", "Karel", "Leen"];
+
+function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, initialPeopleCount, isHighlighted, onHighlightChange }) {
   const [status, setStatus] = useState(initialStatus);
+  const [peopleCount, setPeopleCount] = useState(initialPeopleCount);
+  const [waiter, setWaiterName] = useState(serverName);
+
+  useEffect(() => {
+    const randomPeopleCount = () => Math.floor(Math.random() * 8) + 1;
+    setPeopleCount(randomPeopleCount());
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    setWaiterName(randomName);
+  }, []);
 
   const handleTableClick = () => {
     if (!isHighlighted) {
@@ -24,7 +35,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
         <div className="table-title">{tableName}</div>
         <div className="id-server">
           <div>{`#${tableId}`}</div>
-          <div>{`Served by ${serverName}`}</div>
+          <div>{`Served by ${waiter}`}</div>
         </div>
       </div>
       <div className="orders">

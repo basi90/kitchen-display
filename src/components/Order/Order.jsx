@@ -1,11 +1,17 @@
 import React from 'react';
 import './Order.css';
 
+function formatProductName(productName) {
+  if (!productName) return '';
+  return productName.replace(/_/g, ' '); // Global replacement of all underscores
+}
+
+
 function Order({ product, quantity }) {
   return (
     <div className="order">
       <span className="quantity">{quantity}x</span>
-      <span className="product">{product}</span>
+      <span className="product">{formatProductName(product)}</span>
     </div>
   );
 }
