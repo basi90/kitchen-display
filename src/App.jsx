@@ -26,20 +26,32 @@ function App() {
     const ordersByTable = {};
 
     orders.forEach(order => {
+      // Continue to the next iteration if the order or the table name is null
+      if (!order || !order.table_name) return;
+
       if (!ordersByTable[order.table_name]) {
         ordersByTable[order.table_name] = {};
       }
 
       order.products.forEach(product => {
+        // Skip if the product name or quantity is null
+        if (!product || !product.name || product.quantity == null) return;
+
         if (!ordersByTable[order.table_name][product.name]) {
           ordersByTable[order.table_name][product.name] = 0;
         }
         ordersByTable[order.table_name][product.name] += product.quantity;
       });
+
+      // After processing all products for a table, check if the table has any non-null entries
+      if (Object.keys(ordersByTable[order.table_name]).length === 0) {
+        delete ordersByTable[order.table_name]; // Remove the table if it has no valid products
+      }
     });
 
     return ordersByTable;
   }
+
 
   function handlePageChange(direction) {
     if (direction === 'next' && currentPage < totalPages) {
@@ -59,7 +71,7 @@ function App() {
     <div className="App">
       <Navbar currentPage={currentPage} totalPages={totalPages} />
       <div className="table-container">
-        <Table data={Object.fromEntries(displayedTables)} />
+        <Table data={Object.fromEntries(displayedTables)} currentPage={currentPage} itemsPerPage={itemsPerPage} />
         <div className="side-button left">
           <button className="button" onClick={() => handlePageChange('prev')}>&lt; Previous</button>
         </div>

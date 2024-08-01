@@ -11,7 +11,6 @@
 
 .header, .footer {
   display: flex;
-  flex-wrap: wrap; /* Allow content to wrap */
   justify-content: space-between;
   padding: 10px;
   color: white;
@@ -22,6 +21,7 @@
 .header {
   border-bottom: 1px solid #ddd;
   margin-bottom: 5px;
+  align-items: center; /* Align items in the center vertically */
 }
 
 .footer {
@@ -36,7 +36,8 @@
   flex-direction: column;
   background-color: #f8f8f8;
   overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 200px; /* Adjust this value based on your design */
+  max-height: 200px;
+  box-sizing: border-box; /* Adjust this value based on your design */
 }
 
 .orders::-webkit-scrollbar {
@@ -59,19 +60,35 @@
 .table-title {
   font-weight: bold;
   text-align: left;
+  flex: 1; /* Allow the title to take up the available space */
 }
 
 .id-server {
   font-size: 0.7em;
   display: flex;
   flex-direction: column;
-  flex-basis: 100%; /* Make sure it takes full width if necessary */
-  word-wrap: break-word; /* Ensure long words break to fit within the container */
+  align-items: flex-end; /* Align text to the right */
+  text-align: right; /* Text aligned to the right */
 }
 
 .time-status, .people-count {
   font-size: 0.7em;
 }
+
+.placeholder {
+  flex-grow: 1; /* Ensure it takes up the same space as the orders would */
+  display: flex;
+  align-items: center; /* Center the placeholder text vertically */
+  justify-content: center; /* Center the placeholder text horizontally */
+  height: 100%;
+  background-color: #f0f0f0; /* Slightly different background to indicate emptiness */
+}
+
+.placeholder-id {
+  font-size: 24px; /* Large font size for visibility */
+  color: #ccc; /* Lighter text color */
+}
+
 
 .new {
   background-color: grey;

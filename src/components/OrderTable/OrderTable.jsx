@@ -9,13 +9,14 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
     if (!isHighlighted) {
       onHighlightChange(tableId); // Highlight the table
     } else {
-      // Change status when table is already highlighted
       if (status !== 'done') {
         const nextStatus = status === 'new' ? 'cooking' : 'done';
         setStatus(nextStatus);
       }
     }
   };
+
+  const isEmpty = Object.keys(orders).length === 0;
 
   return (
     <div className={`order-table ${status} ${isHighlighted ? 'highlighted' : ''}`} onClick={handleTableClick}>
@@ -27,9 +28,15 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
         </div>
       </div>
       <div className="orders">
-        {Object.entries(orders).map(([product, quantity]) => (
-          <Order key={product} product={product} quantity={quantity} />
-        ))}
+        {isEmpty ? (
+          <div className="placeholder">
+            <div className="placeholder-id">{`Table #${tableId}`}</div>
+          </div>
+        ) : (
+          Object.entries(orders).map(([product, quantity]) => (
+            <Order key={product} product={product} quantity={quantity} />
+          ))
+        )}
       </div>
       <div className="footer">
         <div className="time-status">
