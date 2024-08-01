@@ -21,7 +21,7 @@ function Navbar({ currentPage, totalPages }) {
           <div className="page-info">Page {currentPage} of {totalPages}</div>
         </div>
       </div>
-      <div className="navbar-title">Kitchen Display</div>
+      <div className="navbar-title">Kitchen 1</div>
       <div className="buttons">
         <button className="btn prioritize">Prioritize</button>
         <button className="btn zoom">Zoom</button>
