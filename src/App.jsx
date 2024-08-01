@@ -60,12 +60,15 @@ function App() {
       <Navbar currentPage={currentPage} totalPages={totalPages} />
       <div className="table-container">
         <Table data={Object.fromEntries(displayedTables)} />
-      </div>
-      <div className="pagination">
-        <button onClick={() => handlePageChange('prev')}>Previous</button>
-        <button onClick={() => handlePageChange('next')}>Next</button>
+        <div className="side-button left">
+          <button className="button" onClick={() => handlePageChange('prev')}>&lt; Previous</button>
+        </div>
+        <div className="side-button right">
+          <button className="button" onClick={() => handlePageChange('next')}>Next &gt;</button>
+        </div>
       </div>
     </div>
+
   );
 }
 
