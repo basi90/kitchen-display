@@ -1,6 +1,21 @@
 .order {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   padding: 5px 0;
   border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+.quantity {
+  flex: 0 0 50px; /* Fixed width for the quantity */
+  text-align: center;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+.product {
+  flex: 1;
+  word-break: break-word;
+  text-align: left;
 }

@@ -6,17 +6,17 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
   const [status, setStatus] = useState(initialStatus);
 
   const handleStatusChange = () => {
-    const nextStatus = status === 'new' ? 'cooking' : status === 'cooking' ? 'done' : 'new';
+    const nextStatus = status === 'new' ? 'cooking' : (status === 'cooking' ? 'done' : 'new');
     setStatus(nextStatus);
   };
 
   return (
-    <div className="order-table">
+    <div className={`order-table ${status}`}>
       <div className="header">
         <div className="title">{tableName}</div>
         <div className="id-server">
-          <div>{tableId}</div>
-          <div>Served by {serverName}</div>
+          <div>{`#${tableId}`}</div>
+          <div>{`Served by ${serverName}`}</div>
         </div>
       </div>
       <div className="orders">

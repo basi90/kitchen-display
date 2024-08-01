@@ -4,7 +4,8 @@ import './Order.css';
 function Order({ product, quantity }) {
   return (
     <div className="order">
-      <span>{quantity}x {product}</span>
+      <span className="quantity">{quantity}x</span>
+      <span className="product">{product}</span>
     </div>
   );
 }

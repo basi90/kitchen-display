@@ -1,6 +1,5 @@
 .order-table {
   border: 1px solid #ccc;
-  padding: 10px;
   margin: 10px;
   border-radius: 5px;
   display: flex;
@@ -14,7 +13,9 @@
 .header, .footer {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
+  padding: 10px;
+  color:white;
+  width: 100%;
 }
 
 .header {
@@ -29,9 +30,10 @@
 
 .orders {
   flex-grow: 1; /* Make the orders section grow to fill available space */
-  padding: 5px 0;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  background-color: #f8f8f8;
   overflow-y: auto; /* Enable vertical scrolling */
   max-height: 200px; /* Adjust this value based on your design */
 }
@@ -46,16 +48,28 @@
   scrollbar-width: none;  /* Firefox */
 }
 
-.title {
+.order {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.table-title {
   font-weight: bold;
+  text-align: left;
 }
 
 .id-server {
-  font-size: 0.9em;
+  font-size: 0.7em;
   display: flex;
   flex-direction: column;
 }
 
 .time-status, .people-count {
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
+
+.new { background-color: grey; }
+.cooking { background-color: orange; }
+.done { background-color: green; }
