@@ -48,6 +48,10 @@
   text-align: center;
 }
 
+.navbar-title svg {
+  margin-right: 16px;
+}
+
 .buttons {
   display: flex;
   gap: 10px;
@@ -63,15 +67,22 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
+.btn svg {
+  margin-right: 8px;
+}
+
+
 .btn:hover {
   background-color: #777;
 }
 
+
+
 @media (max-width: 600px) {
   .navbar {
-      height: 50px; /* Smaller navbar on smaller screens */
+      height: 50px;
   }
   .logo {
-      max-height: 80%; /* Smaller logo to fit a smaller navbar */
+      max-height: 80%;
   }
 }

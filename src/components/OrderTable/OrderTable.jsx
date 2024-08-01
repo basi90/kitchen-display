@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Order from '../Order/Order';
 import './OrderTable.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const names = ["Bram", "Annelies", "Joren", "Els", "Stijn", "Lotte", "Wout", "Ine", "Karel", "Leen"];
 
@@ -53,7 +55,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
         <div className="time-status">
           {timePassed} | {status}
         </div>
-        <div className="people-count">People: {peopleCount}</div>
+        <div className="people-count"><FontAwesomeIcon icon={faUser} />{peopleCount}</div>
       </div>
     </div>
   );

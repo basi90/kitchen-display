@@ -73,6 +73,10 @@
   font-size: 0.7em;
 }
 
+.people-count svg {
+  margin-right: 8px;
+}
+
 .placeholder {
   flex-grow: 1;
   align-items: center;
