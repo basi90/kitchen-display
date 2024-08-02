@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Order from '../Order/Order';
 import './OrderTable.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +14,8 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
   const [status, setStatus] = useState(initialStatus);
   const [peopleCount, setPeopleCount] = useState(initialPeopleCount);
   const [waiter, setWaiterName] = useState(serverName);
+  const ordersRef = useRef(null);
+  const [showMoreIndicator, setShowMoreIndicator] = useState(false);
 
   useEffect(() => {
     const randomPeopleCount = () => Math.floor(Math.random() * 8) + 1;
@@ -21,6 +23,39 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
     const randomName = names[Math.floor(Math.random() * names.length)];
     setWaiterName(randomName);
   }, []);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      if (!ordersRef.current) {
+        console.log("Ref not attached");
+        return;
+      }
+
+      const { scrollTop, scrollHeight, clientHeight } = ordersRef.current;
+      console.log("Scroll Top:", scrollTop);                     // Logs the current vertical position of the scroll bar
+      console.log("Scroll Height:", scrollHeight);               // Logs the total scrollable height of the element
+      console.log("Client Height:", clientHeight);               // Logs the visible height of the element
+
+      const isScrolledToBottom = scrollTop + clientHeight >= scrollHeight - 1; // Adjusting by 1px margin of error
+      console.log("Is Scrolled To Bottom:", isScrolledToBottom); // Logs true if the scroll is at the bottom
+
+      setShowMoreIndicator(!isScrolledToBottom);
+    };
+
+    const element = ordersRef.current;
+    if (element) {
+      element.addEventListener('scroll', checkScroll);
+      checkScroll();  // Check immediately in case the list is already full on mount
+    }
+
+  // Cleanup
+    return () => {
+      if (element) {
+        element.removeEventListener('scroll', checkScroll);
+      }
+    };
+  }, []); // Empty array means this effect runs once on mount and cleanup on unmount
+
 
   const handleTableClick = () => {
     if (!isHighlighted) {
@@ -44,7 +79,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
           <div>{`Served by ${waiter}`}</div>
         </div>
       </div>
-      <div className="orders">
+      <div className="orders" ref={ordersRef}>
         {isEmpty ? (
           <div className="placeholder">
             <div className="placeholder-id">{`Table #${tableId}`}</div>
@@ -54,6 +89,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
             <Order key={product} product={product} quantity={quantity} />
           ))
         )}
+        {showMoreIndicator && <div className="more-items-indicator">&#x25BC; More Items</div>}
       </div>
       <div className="footer">
         <div className="time-status">
