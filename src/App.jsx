@@ -4,24 +4,32 @@ import Table from './components/Table/Table';
 import './App.css';
 
 function App() {
+  // State for storing processed order data
   const [processedData, setProcessedData] = useState({});
+
+  // State for current page in pagination
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Constant for items per page in pagination
   const itemsPerPage = 8;
 
+  // useEffect hook for fetching data on component mount
   useEffect(() => {
     async function fetchData() {
       try {
+        // Fetching data from the API
         const response = await fetch('https://staging.smartendr.be/app/api_get_orders?locations=23,12&timestamp=43399');
         const data = await response.json();
         const groupedData = processData(data.orders);
         setProcessedData(groupedData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error); // Logging any errors during fetch
       }
     }
     fetchData();
   }, []);
 
+  // Function to process the fetched orders data
   function processData(orders) {
     const ordersByTable = {};
 
@@ -49,7 +57,7 @@ function App() {
     return ordersByTable;
   }
 
-
+  // Function to handle pagination change
   function handlePageChange(direction) {
     if (direction === 'next' && currentPage < totalPages) {
       setCurrentPage(prev => prev + 1);
@@ -58,7 +66,10 @@ function App() {
     }
   }
 
+  // Calculating total pages for pagination
   const totalPages = Math.ceil(Object.keys(processedData).length / itemsPerPage);
+
+  // Determining the orders to be displayed based on current page
   const displayedTables = Object.entries(processedData).slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage

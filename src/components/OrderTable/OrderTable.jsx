@@ -11,12 +11,22 @@ function capitalizeFirstLetter(string) {
 }
 
 function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, initialPeopleCount, isHighlighted, onHighlightChange }) {
+  // State for the status of the table
   const [status, setStatus] = useState(initialStatus);
+
+  // State for the number of people at the table
   const [peopleCount, setPeopleCount] = useState(initialPeopleCount);
+
+  // State for the name of the server at the table
   const [waiter, setWaiterName] = useState(serverName);
+
+  // Reference for the orders container (used for scrolling features)
   const ordersRef = useRef(null);
+
+  // State to control the visibility of the "More Items" indicator
   const [showMoreIndicator, setShowMoreIndicator] = useState(false);
 
+  // Effect to handle randomizing the waiter name and people count on mount
   useEffect(() => {
     const randomPeopleCount = () => Math.floor(Math.random() * 8) + 1;
     setPeopleCount(randomPeopleCount());
@@ -24,6 +34,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
     setWaiterName(randomName);
   }, []);
 
+  // Effect to add a scroll listener to the orders container
   useEffect(() => {
     const checkScroll = () => {
       if (!ordersRef.current) {
@@ -55,7 +66,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
     };
   }, []);
 
-
+  // Function to handle click events on the table, changing its status or highlighting it
   const handleTableClick = () => {
     if (!isHighlighted) {
       onHighlightChange(tableId);

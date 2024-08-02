@@ -3,14 +3,17 @@ import OrderTable from '../OrderTable/OrderTable';
 import './Table.css';
 
 function Table({ data, currentPage, itemsPerPage }) {
+  // State to track which table ID is currently highlighted
   const [highlightedId, setHighlightedId] = useState(null);
 
+  // Function to handle changes in which table is highlighted
   const handleHighlightChange = (id) => {
     setHighlightedId(id);
   };
 
   return (
     <div className="table">
+      {/* Mapping over each table data entry to render individual OrderTable components */}
       {Object.entries(data).map(([tableName, orders], index) => (
         <OrderTable
           key={index}
