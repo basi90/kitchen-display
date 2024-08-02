@@ -1,17 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
 .App {
+  font-family: 'Karla', sans-serif;
   position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-
-body {
-  font-family: 'Karla', sans-serif;
-}
-
 
 .table-container {
   flex-grow: 1;
