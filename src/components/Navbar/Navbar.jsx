@@ -6,12 +6,14 @@ import { faFlag, faSearch, faBars, faSliders } from '@fortawesome/free-solid-svg
 
 
 function Navbar({ currentPage, totalPages }) {
+  // State for managing the current time display
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
+  // Effect to update the clock every second
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-    }, 1000);
+    }, 60000);
     return () => clearInterval(timer);
   }, []);
 
