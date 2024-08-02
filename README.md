@@ -50,7 +50,7 @@ To get this project running locally, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourrepo/kitchen-display.git
+git clone https://github.com/basi90/kitchen-display.git
 
 # Go into the project directory
 cd kitchen-display
