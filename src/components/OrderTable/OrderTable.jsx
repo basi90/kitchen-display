@@ -6,6 +6,10 @@ import { faUser, faClock } from '@fortawesome/free-solid-svg-icons';
 
 const names = ["Bram", "Annelies", "Joren", "Els", "Stijn", "Lotte", "Wout", "Ine", "Karel", "Leen"];
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, initialPeopleCount, isHighlighted, onHighlightChange }) {
   const [status, setStatus] = useState(initialStatus);
   const [peopleCount, setPeopleCount] = useState(initialPeopleCount);
@@ -53,7 +57,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
       </div>
       <div className="footer">
         <div className="time-status">
-          <FontAwesomeIcon icon={faClock} className="clock-icon" />{timePassed} - {status}
+          <FontAwesomeIcon icon={faClock} className="clock-icon" />{timePassed} - {capitalizeFirstLetter(status)}
         </div>
         <div className="people-count"><FontAwesomeIcon icon={faUser} />{peopleCount}</div>
       </div>
