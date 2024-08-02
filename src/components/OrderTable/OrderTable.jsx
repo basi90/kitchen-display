@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Order from '../Order/Order';
 import './OrderTable.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faClock } from '@fortawesome/free-solid-svg-icons';
 
-function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, peopleCount, isHighlighted, onHighlightChange }) {
+const names = ["Bram", "Annelies", "Joren", "Els", "Stijn", "Lotte", "Wout", "Ine", "Karel", "Leen"];
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function OrderTable({ tableName, orders, tableId, serverName, timePassed, initialStatus, initialPeopleCount, isHighlighted, onHighlightChange }) {
   const [status, setStatus] = useState(initialStatus);
+  const [peopleCount, setPeopleCount] = useState(initialPeopleCount);
+  const [waiter, setWaiterName] = useState(serverName);
+
+  useEffect(() => {
+    const randomPeopleCount = () => Math.floor(Math.random() * 8) + 1;
+    setPeopleCount(randomPeopleCount());
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    setWaiterName(randomName);
+  }, []);
 
   const handleTableClick = () => {
     if (!isHighlighted) {
-      onHighlightChange(tableId); // Highlight the table
+      onHighlightChange(tableId);
     } else {
       if (status !== 'done') {
         const nextStatus = status === 'new' ? 'cooking' : 'done';
@@ -24,7 +41,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
         <div className="table-title">{tableName}</div>
         <div className="id-server">
           <div>{`#${tableId}`}</div>
-          <div>{`Served by ${serverName}`}</div>
+          <div>{`Served by ${waiter}`}</div>
         </div>
       </div>
       <div className="orders">
@@ -40,9 +57,9 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
       </div>
       <div className="footer">
         <div className="time-status">
-          {timePassed} | {status}
+          <FontAwesomeIcon icon={faClock} className="clock-icon" />{timePassed} - {capitalizeFirstLetter(status)}
         </div>
-        <div className="people-count">People: {peopleCount}</div>
+        <div className="people-count"><FontAwesomeIcon icon={faUser} />{peopleCount}</div>
       </div>
     </div>
   );

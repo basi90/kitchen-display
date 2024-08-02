@@ -13,6 +13,7 @@
   z-index: 1000;
   background-color: white;
   border-bottom: 1px solid #333;
+  box-shadow: 0 0 0 1px rgba(52, 52, 52, 0.5);
 }
 
 .left-section {
@@ -23,13 +24,13 @@
 .logo {
   max-height: 100%;
   width: auto;
-  margin-right: 20px;
+  margin-right: 48px;
 }
 
 .time-pages {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .time {
@@ -47,9 +48,13 @@
   text-align: center;
 }
 
+.navbar-title svg {
+  margin-right: 16px;
+}
+
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 24px;
 }
 
 .btn {
@@ -62,15 +67,22 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
+.btn svg {
+  margin-right: 8px;
+}
+
+
 .btn:hover {
   background-color: #777;
 }
 
+
+
 @media (max-width: 600px) {
   .navbar {
-      height: 50px; /* Smaller navbar on smaller screens */
+      height: 50px;
   }
   .logo {
-      max-height: 80%; /* Smaller logo to fit a smaller navbar */
+      max-height: 80%;
   }
 }

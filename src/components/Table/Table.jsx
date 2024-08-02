@@ -13,14 +13,12 @@ function Table({ data, currentPage, itemsPerPage }) {
     <div className="table">
       {Object.entries(data).map(([tableName, orders], index) => (
         <OrderTable
-          key={index} // You might want to find a more stable key if the data changes
-          tableId={((currentPage - 1) * itemsPerPage) + index + 1} // Calculate ID based on current page and index
+          key={index}
+          tableId={((currentPage - 1) * itemsPerPage) + index + 1}
           tableName={tableName}
           orders={orders}
-          serverName="John Doe"
-          timePassed="15 mins"
+          timePassed="15m"
           initialStatus="new"
-          peopleCount={4}
           isHighlighted={((currentPage - 1) * itemsPerPage) + index + 1 === highlightedId}
           onHighlightChange={handleHighlightChange}
         />

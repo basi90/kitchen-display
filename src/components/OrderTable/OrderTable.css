@@ -4,9 +4,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Make sure it takes the full height available */
+  height: 100%;
   box-sizing: border-box;
-  width: 100%; /* Adjust to fill the grid cell */
+  width: 100%;
+  min-height: 299px;
 }
 
 .header, .footer {
@@ -15,11 +16,11 @@
   padding: 10px;
   color: white;
   width: 100%;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  box-sizing: border-box;
 }
 
 .header {
-  align-items: center; /* Align items in the center vertically */
+  align-items: center;
 }
 
 .footer {
@@ -27,24 +28,24 @@
 }
 
 .orders {
-  flex-grow: 1; /* Make the orders section grow to fill available space */
+  flex-grow: 1;
   padding: 10px;
   display: flex;
   flex-direction: column;
   background-color: #f8f8f8;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
   max-height: 200px;
-  box-sizing: border-box; /* Adjust this value based on your design */
+  box-sizing: border-box;
 }
 
 .orders::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0;
+  background: transparent;
 }
 
 .orders {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .order {
@@ -57,46 +58,53 @@
 .table-title {
   font-weight: bold;
   text-align: left;
-  flex: 1; /* Allow the title to take up the available space */
+  flex: 1;
 }
 
 .id-server {
   font-size: 0.7em;
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* Align text to the right */
-  text-align: right; /* Text aligned to the right */
+  align-items: flex-end;
+  text-align: right;
 }
 
 .time-status, .people-count {
   font-size: 0.7em;
 }
 
+.people-count svg {
+  margin-right: 8px;
+}
+
 .placeholder {
-  flex-grow: 1; /* Ensure it takes up the same space as the orders would */
-  display: flex;
-  align-items: center; /* Center the placeholder text vertically */
-  justify-content: center; /* Center the placeholder text horizontally */
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  background-color: #f0f0f0; /* Slightly different background to indicate emptiness */
+  background-color: #f0f0f0;
 }
 
 .placeholder-id {
-  font-size: 24px; /* Large font size for visibility */
-  color: #ccc; /* Lighter text color */
+  font-size: 24px;
+  color: #ccc;
+}
+
+.clock-icon {
+  margin-right: 8px;
 }
 
 
 .new {
-  background-color: #607d8b; /* Less stark, more subdued blue-grey */
+  background-color: #607d8b;
 }
 .cooking {
-  background-color: #ff9800; /* Vibrant orange */
+  background-color: #ff9800;
 }
 .done {
-  background-color: #4caf50; /* Rich green */
+  background-color: #4caf50;
 }
 
 .highlighted {
-  border-width: 8px; /* Thicker border for highlighted state */
+  border-width: 8px;
 }

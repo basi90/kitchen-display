@@ -26,7 +26,6 @@ function App() {
     const ordersByTable = {};
 
     orders.forEach(order => {
-      // Continue to the next iteration if the order or the table name is null
       if (!order || !order.table_name) return;
 
       if (!ordersByTable[order.table_name]) {
@@ -34,7 +33,6 @@ function App() {
       }
 
       order.products.forEach(product => {
-        // Skip if the product name or quantity is null
         if (!product || !product.name || product.quantity == null) return;
 
         if (!ordersByTable[order.table_name][product.name]) {
@@ -43,9 +41,8 @@ function App() {
         ordersByTable[order.table_name][product.name] += product.quantity;
       });
 
-      // After processing all products for a table, check if the table has any non-null entries
       if (Object.keys(ordersByTable[order.table_name]).length === 0) {
-        delete ordersByTable[order.table_name]; // Remove the table if it has no valid products
+        delete ordersByTable[order.table_name];
       }
     });
 
@@ -72,11 +69,13 @@ function App() {
       <Navbar currentPage={currentPage} totalPages={totalPages} />
       <div className="table-container">
         <Table data={Object.fromEntries(displayedTables)} currentPage={currentPage} itemsPerPage={itemsPerPage} />
-        <div className="side-button left">
-          <button className="button" onClick={() => handlePageChange('prev')}>&lt; Previous</button>
+      </div>
+      <div className="navigation-buttons">
+        <div className="arrow-button left" onClick={() => handlePageChange('prev')}>
+          <div className="arrow-left"></div>
         </div>
-        <div className="side-button right">
-          <button className="button" onClick={() => handlePageChange('next')}>Next &gt;</button>
+        <div className="arrow-button right" onClick={() => handlePageChange('next')}>
+          <div className="arrow-right"></div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .App {
-  position: relative; /* Ensures the absolute positioning is relative to this container */
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,28 +9,36 @@
 .table-container {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 64px 10px 10px; /* Increased top padding */
+  padding: 64px 10px 10px;
   box-sizing: border-box;
 }
 
+.navigation-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 14px;
+  }
 
-.side-button {
-  position: absolute;
-  top: 50%; /* Centers vertically */
-  transform: translateY(-50%); /* Aligns center */
-  z-index: 10; /* Ensures it's above other content */
-  opacity: 0; /* Makes buttons invisible but still interactive */
-  background-color: transparent; /* No background */
-  border: none; /* No borders */
-  width: 16px; /* Sufficient width for easier interaction */
-  height: 16px; /* Sufficient height for easier interaction */
-  cursor: pointer; /* Shows a pointer to hint at interactivity */
-}
+  .arrow-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin: 20px auto;
+  }
 
-.side-button.left {
-  left: 0; /* Positions button on the left side of the screen */
-}
+  .arrow-left, .arrow-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    cursor: pointer;
+  }
 
-.side-button.right {
-  right: 0; /* Positions button on the right side of the screen */
-}
+  .arrow-left {
+    border-width: 20px 30px 20px 0;
+    border-color: transparent #808080 transparent transparent;
+  }
+
+  .arrow-right {
+    border-width: 20px 0 20px 30px;
+    border-color: transparent transparent transparent #808080;
+  }
