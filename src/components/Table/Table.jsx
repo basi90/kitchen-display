@@ -18,7 +18,7 @@ function Table({ data, currentPage, itemsPerPage }) {
           tableName={tableName}
           orders={orders}
           serverName="John Doe"
-          timePassed="15 mins"
+          timePassed="15m"
           initialStatus="new"
           peopleCount={4}
           isHighlighted={((currentPage - 1) * itemsPerPage) + index + 1 === highlightedId}

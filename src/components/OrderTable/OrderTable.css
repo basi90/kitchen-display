@@ -90,6 +90,10 @@
   color: #ccc;
 }
 
+.clock-icon {
+  margin-right: 8px;
+}
+
 
 .new {
   background-color: #607d8b;
