@@ -9,7 +9,7 @@ function Navbar({ currentPage, totalPages }) {
   // State for managing the current time display
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
-  // Effect to update the clock every second
+  // Effect to update the clock every minute
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
