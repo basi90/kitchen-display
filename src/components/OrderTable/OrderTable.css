@@ -93,19 +93,6 @@
   margin-right: 8px;
 }
 
-.placeholder {
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background-color: #f0f0f0;
-}
-
-.placeholder-id {
-  font-size: 24px;
-  color: #ccc;
-}
-
 .clock-icon {
   margin-right: 8px;
 }
