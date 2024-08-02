@@ -8,6 +8,28 @@ This React application serves as a dynamic kitchen display system, designed to s
 - **FontAwesome**: For icons used across the application.
 - **CSS**: For styling components.
 
+## Component Overviews
+
+### App Component
+- Root component that orchestrates data fetching, pagination, and state management.
+
+### Table Component
+- Renders `OrderTable` components based on processed data and manages pagination.
+
+### OrderTable Component
+- Displays details for each table, manages order status and interaction for highlighting and updating orders.
+
+### Order Component
+- Displays individual order items, focusing on reusability and data presentation.
+
+### Navbar Component
+- Provides real-time updates, navigation controls, and user interface elements like logo and interaction buttons.
+
+## General Observations Across Components
+- Each part of the application is broken down into manageable components, following best practices for maintainability and scalability.
+- Effective use of React's useState and useEffect hooks to manage state and side effects.
+- Consistent use of CSS for styling, ensuring responsive design and user-friendly interfaces.
+
 ## Features
 
 - **Data Fetching**: Automatically fetches orders from `https://staging.smartendr.be/app/api_get_orders` with specified parameters.
