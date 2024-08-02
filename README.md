@@ -19,6 +19,10 @@ This React application serves as a dynamic kitchen display system, designed to s
 
 Navigate through the app using the pagination controls at the bottom of the display. Each page shows up to 8 orders, organized by table. The navbar shows the current time and page information.
 
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 ## Installation
 To get this project running locally, follow these steps:
 
