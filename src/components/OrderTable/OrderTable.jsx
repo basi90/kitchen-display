@@ -32,12 +32,12 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
       }
 
       const { scrollTop, scrollHeight, clientHeight } = ordersRef.current;
-      console.log("Scroll Top:", scrollTop);                     // Logs the current vertical position of the scroll bar
-      console.log("Scroll Height:", scrollHeight);               // Logs the total scrollable height of the element
-      console.log("Client Height:", clientHeight);               // Logs the visible height of the element
+      console.log("Scroll Top:", scrollTop);
+      console.log("Scroll Height:", scrollHeight);
+      console.log("Client Height:", clientHeight);
 
-      const isScrolledToBottom = scrollTop + clientHeight >= scrollHeight - 1; // Adjusting by 1px margin of error
-      console.log("Is Scrolled To Bottom:", isScrolledToBottom); // Logs true if the scroll is at the bottom
+      const isScrolledToBottom = scrollTop + clientHeight >= scrollHeight - 1;
+      console.log("Is Scrolled To Bottom:", isScrolledToBottom);
 
       setShowMoreIndicator(!isScrolledToBottom);
     };
@@ -45,16 +45,15 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
     const element = ordersRef.current;
     if (element) {
       element.addEventListener('scroll', checkScroll);
-      checkScroll();  // Check immediately in case the list is already full on mount
+      checkScroll();
     }
 
-  // Cleanup
     return () => {
       if (element) {
         element.removeEventListener('scroll', checkScroll);
       }
     };
-  }, []); // Empty array means this effect runs once on mount and cleanup on unmount
+  }, []);
 
 
   const handleTableClick = () => {
@@ -68,8 +67,6 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
     }
   };
 
-  const isEmpty = Object.keys(orders).length === 0;
-
   return (
     <div className={`order-table ${status} ${isHighlighted ? 'highlighted' : ''}`} onClick={handleTableClick}>
       <div className="header">
@@ -80,15 +77,7 @@ function OrderTable({ tableName, orders, tableId, serverName, timePassed, initia
         </div>
       </div>
       <div className="orders" ref={ordersRef}>
-        {isEmpty ? (
-          <div className="placeholder">
-            <div className="placeholder-id">{`Table #${tableId}`}</div>
-          </div>
-        ) : (
-          Object.entries(orders).map(([product, quantity]) => (
-            <Order key={product} product={product} quantity={quantity} />
-          ))
-        )}
+        {Object.entries(orders).map(([product, quantity]) => (<Order key={product} product={product} quantity={quantity} />))}
         {showMoreIndicator && <div className="more-items-indicator">&#x25BC; More Items</div>}
       </div>
       <div className="footer">
